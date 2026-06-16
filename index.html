@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>RepairMaster Academy — Smartphone Repair Learning Platform</title>
+    <meta name="description" content="Learn smartphone repair from beginner to advanced board-level technician. Interactive lessons, diagnostic simulators, and certification." />
+    <meta name="theme-color" content="#050b1f" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/png" href="/icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+    <script>
+      // Force unregister any existing service workers that might be intercepting or breaking preview iframes
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+          for (let registration of registrations) {
+            registration.unregister().then(function(success) {
+              console.log('[SW Purge] Unregistered service worker:', success);
+            });
+          }
+        });
+      }
+      // Completely clear any CacheStorage caches to ensure fresh loading
+      if ('caches' in window) {
+        caches.keys().then(function(cacheNames) {
+          cacheNames.forEach(function(cacheName) {
+            caches.delete(cacheName).then(function() {
+              console.log('[Cache Purge] Deleted cache:', cacheName);
+            });
+          });
+        });
+      }
+    </script>
+  </head>
+  <body class="bg-slate-950">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
